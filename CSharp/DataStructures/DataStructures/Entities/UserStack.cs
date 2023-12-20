@@ -1,22 +1,13 @@
 ﻿using System.Text;
 
-namespace DataStructures.Stack;
+namespace DataStructures.Entities;
 
 public class UserStack<T> {
-
-    private readonly T[] stack;
+    private readonly Dictionary<int, T> stack = new Dictionary<int, T>();
     private int counter = 0;
 
-    public UserStack(int size) {
-        stack = new T[size];
-    }
-
     public void Push(T item) {
-        if (IsFull()) {
-            throw new Exception("Stack is full");
-        }
-
-        stack[counter++] = item;
+        stack.TryAdd(counter++, item);
     }
 
     public T Pop() {
@@ -24,8 +15,18 @@ public class UserStack<T> {
             throw new Exception("Stack is empty");
         }
 
+        T item = stack[--counter];
+        stack.Remove(counter);
+
+        return item;
+    }
+
+    public T Peek() {
+        if (IsEmpty()) {
+            throw new Exception("Stack is empty");
+        }
+
         T item = stack[counter - 1];
-        stack[--counter] = default;
 
         return item;
     }
@@ -38,12 +39,8 @@ public class UserStack<T> {
         return Size() == 0;
     }
 
-    public bool IsFull() {
-        return Size() == stack.Length;
-    }
-
     public void Clear() {
-        Array.Clear(stack);
+        stack.Clear();
         counter = 0;
     }
 
@@ -54,11 +51,11 @@ public class UserStack<T> {
 
         StringBuilder sb = new StringBuilder("[ ");
 
-        for (int i = 0; i < Size(); i++) {
-            sb.Append(stack[i] + " ");
+        for (int i = 0; i < Size() - 1; i++) {
+            sb.Append(stack[i] + ", ");
         }
 
-        sb.Append(']');
+        sb.Append(stack[Size() - 1] + " ]");
 
         return sb.ToString();
     }
