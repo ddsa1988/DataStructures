@@ -1,11 +1,11 @@
 ﻿namespace DataStructures.Entities;
 
 public class Node<T> {
-    public T Value { get; private set; }
-    public Node<T>? Next { get; private set; }
+    public T Element { get; private set; }
+    public Node<T>? Next { get; set; }
 
-    public Node(T value) {
-        Value = value;
+    public Node(T element) {
+        Element = element;
         Next = null;
     }
 
@@ -20,19 +20,19 @@ public class Node<T> {
             return false;
         }
 
-        return Comparer<T>.Equals(Value, other.Value);
+        return Comparer<T>.Equals(Element, other.Element);
     }
 
     public override int GetHashCode() {
-        if (Value == null) {
+        if (Element == null) {
             return 0;
         }
 
-        return Value.GetHashCode();
+        return Element.GetHashCode();
     }
 
     public override string ToString() {
-        return "Value: " + Value +
+        return "Value: " + Element +
                " Next: " + Next;
     }
 }
