@@ -8,5 +8,11 @@ public class Program {
 
         list.Push("Diego");
         list.Push("Amanda");
+        list.Push("Rodrigo");
+        list.Push("Tainara");
+        list.Push("Ivanice");
+        list.Push("Mirelli");
+        list.RemoveAt(3);
+        Console.WriteLine(list);
     }
 }

@@ -16,23 +16,16 @@ public class Node<T> {
 
         Node<T>? other = obj as Node<T>;
 
-        if (other == null) {
-            return false;
-        }
-
-        return Comparer<T>.Equals(Element, other.Element);
+        return other != null && Comparer<T>.Equals(Element, other.Element);
     }
 
     public override int GetHashCode() {
-        if (Element == null) {
-            return 0;
-        }
 
-        return Element.GetHashCode();
+        return Element == null ? 0 : Element.GetHashCode();
     }
 
     public override string ToString() {
-        return "Value: " + Element +
+        return Element +
                " Next: " + Next;
     }
 }
