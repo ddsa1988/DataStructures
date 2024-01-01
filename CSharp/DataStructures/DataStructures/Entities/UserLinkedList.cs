@@ -9,47 +9,21 @@ public class UserLinkedList<T> {
     public void Push(T element) {
         Node<T> node = new Node<T>(element);
 
-        if (head == null) {
+        if (IsEmpty()) {
             head = node;
         } else {
-            Node<T> current = head;
+            Node<T>? current = head;
 
-            while (current.Next != null) {
+            while (current?.Next != null) {
                 current = current.Next;
             }
-            current.Next = node;
+
+            if (current != null) {
+                current.Next = node;
+            }
         }
 
         counter++;
-    }
-
-    public T RemoveAt(int index) {
-        if (IsEmpty()) {
-            throw new Exception("Linkedlist is empty");
-        }
-
-        if (index < 0 || index > Size() - 1) {
-
-            throw new Exception("Index out of range");
-        }
-
-        Node<T>? current = head;
-
-        if (index == 0) {
-            head = head?.Next;
-        } else {
-            Node<T>? previous = null;
-
-            for (int i = 0; i < index; i++) {
-                previous = current;
-                current = current?.Next;
-            }
-
-            previous.Next = current.Next;
-        }
-        counter--;
-
-        return current.Element;
     }
 
     public int Size() {
@@ -60,13 +34,17 @@ public class UserLinkedList<T> {
         return Size() == 0;
     }
 
+    public void Clear() {
+        head = null;
+        counter = 0;
+    }
+
     public override string ToString() {
         if (IsEmpty()) {
             return "";
         }
 
         StringBuilder sb = new StringBuilder("[ ");
-
         Node<T>? current = head;
 
         while (current?.Next != null) {

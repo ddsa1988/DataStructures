@@ -1,7 +1,7 @@
 ﻿namespace DataStructures.Entities;
 
 public class Node<T> {
-    public T Element { get; private set; }
+    public T Element { get; set; }
     public Node<T>? Next { get; set; }
 
     public Node(T element) {
@@ -20,7 +20,6 @@ public class Node<T> {
     }
 
     public override int GetHashCode() {
-
         return Element == null ? 0 : Element.GetHashCode();
     }
 
