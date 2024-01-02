@@ -13,6 +13,9 @@ public class Program {
 
         Console.WriteLine(list);
         Console.WriteLine(list.Size());
-        Console.WriteLine(list.GetElementAt(3));
+        Console.WriteLine(list.GetElementAt(2));
+        Console.WriteLine(list.IndexOf("Cereja"));
+        list.RemoveAt(2);
+        Console.WriteLine(list);
     }
 }

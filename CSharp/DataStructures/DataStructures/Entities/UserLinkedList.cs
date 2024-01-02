@@ -44,6 +44,35 @@ public class UserLinkedList<T> {
         return node;
     }
 
+    public int IndexOf(T element) {
+
+        Node<T>? node = new Node<T>(element);
+        Node<T>? current = head;
+
+        for (int i = 0; i < Size(); i++) {
+
+            if (current != null && current.Equals(node)) {
+                return i;
+            }
+
+            current = current?.Next;
+        }
+
+        return -1;
+    }
+
+    public T? RemoveAt(int index) {
+        Node<T>? current = head;
+
+        if (index == 0) {
+            head = current?.Next;
+        } else {
+            Node<T>? previous = GetElementAt(index - 1);
+        }
+
+        return default(T);
+    }
+
     public int Size() {
         return counter;
     }
