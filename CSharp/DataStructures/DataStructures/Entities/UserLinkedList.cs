@@ -26,6 +26,24 @@ public class UserLinkedList<T> {
         counter++;
     }
 
+    public Node<T>? GetElementAt(int index) {
+        if (IsEmpty()) {
+            throw new Exception("Linkedlist is empty");
+        }
+
+        if (index < 0 || index > Size() - 1) {
+            throw new Exception("Linkedlist index outrange");
+        }
+
+        Node<T>? node = head;
+
+        for (int i = 0; i < index; i++) {
+            node = node?.Next;
+        }
+
+        return node;
+    }
+
     public int Size() {
         return counter;
     }
@@ -52,7 +70,11 @@ public class UserLinkedList<T> {
             current = current.Next;
         }
 
-        sb.Append(current.Element + " ]");
+        if (current != null) {
+            sb.Append(current.Element);
+        }
+
+        sb.Append(" ]");
 
         return sb.ToString();
     }

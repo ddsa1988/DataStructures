@@ -13,5 +13,6 @@ public class Program {
 
         Console.WriteLine(list);
         Console.WriteLine(list.Size());
+        Console.WriteLine(list.GetElementAt(3));
     }
 }
