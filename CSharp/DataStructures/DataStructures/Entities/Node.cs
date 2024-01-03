@@ -1,7 +1,7 @@
 ﻿namespace DataStructures.Entities;
 
 public class Node<T> {
-    public T Element { get; set; }
+    public T Element { get; }
     public Node<T>? Next { get; set; }
 
     public Node(T element) {
@@ -24,7 +24,9 @@ public class Node<T> {
     }
 
     public override string ToString() {
+        string nextToString = Next != null ? Next.ToString() : "null";
+
         return Element +
-               " Next: " + Next;
+               " => Next: " + nextToString;
     }
 }
