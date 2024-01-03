@@ -27,7 +27,7 @@ public class UserLinkedList<T> {
     }
 
     public bool Insert(T element, int index) {
-        if (index < 0 || (index > 0 && index > Size())) {
+        if (index < 0 || index > Size()) {
             return false;
         }
 
